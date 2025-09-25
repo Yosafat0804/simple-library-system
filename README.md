@@ -32,10 +32,6 @@ perpustakaan-mini/
 │   └── io.go            # Fungsi input & penyimpanan file JSON
 └── library.json         # Database sederhana untuk menyimpan data buku
 
-
-pgsql
-Copy code
-
 ---
 
 ## 🗂️ Model Data Buku
