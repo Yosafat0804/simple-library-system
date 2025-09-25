@@ -20,7 +20,7 @@ Data tersimpan dalam format JSON sehingga tetap aman meskipun aplikasi ditutup.
 ---
 
 ## 📂 Struktur Direktori
-```go
+
 perpustakaan-mini/
 ├── main.go              # Entry point aplikasi
 ├── go.mod               # Go module file
@@ -34,7 +34,7 @@ perpustakaan-mini/
 
 ---
 
-## 🗂️ Model Data Buku
+## Model Data Buku
 
 type Book struct {
     ID         int    `json:"id"`
