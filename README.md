@@ -36,7 +36,6 @@ perpustakaan-mini/
 
 ## 🗂️ Model Data Buku
 
-```go
 type Book struct {
     ID         int    `json:"id"`
     Title      string `json:"title"`
