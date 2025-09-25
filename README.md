@@ -22,15 +22,16 @@ Data tersimpan dalam format JSON sehingga tetap aman meskipun aplikasi ditutup.
 ## 📂 Struktur Direktori
 
 perpustakaan-mini/
-├── main.go # Entry point aplikasi
-├── go.mod # Go module file
+├── main.go              # Entry point aplikasi
+├── go.mod               # Go module file
 ├── models/
-│ └── book.go # Definisi struct Book & Library
+│   └── book.go          # Definisi struct Book & Library
 ├── services/
-│ └── transaction.go # Logika transaksi peminjaman/pengembalian
+│   └── transaction.go   # Logika transaksi peminjaman/pengembalian
 ├── utils/
-│ └── io.go # Fungsi input & penyimpanan file JSON
-└── library.json # Database sederhana untuk menyimpan data buku
+│   └── io.go            # Fungsi input & penyimpanan file JSON
+└── library.json         # Database sederhana untuk menyimpan data buku
+
 
 pgsql
 Copy code
