@@ -1,74 +1,67 @@
-# 📚 Sistem Perpustakaan Sederhana
+# 📚 Aplikasi To-Do List Sederhana
 
-Aplikasi **console-based** yang dibuat menggunakan bahasa pemrograman **Go**. Program ini memungkinkan pengguna untuk mengelola data buku dengan fitur **CRUD (Create, Read, Update, Delete)**, pencarian buku, hingga riwayat transaksi peminjaman. Semua data tersimpan dalam file **JSON**, sehingga tetap aman meskipun aplikasi ditutup.
+Aplikasi console-based yang dibuat menggunakan bahasa pemrograman Go. Program ini memungkinkan pengguna untuk mengelola daftar tugas dengan fitur CRUD (Create, Read, Update, Delete), menandai tugas selesai, hingga menyimpan data secara permanen dalam file JSON sehingga daftar tetap tersimpan meskipun aplikasi ditutup.
 
 ---
 
 ## ✨ Fitur Utama
 
-- ➕ **Tambah Buku** : menambahkan data buku baru (judul & penulis)  
-- 📖 **Lihat Buku** : menampilkan semua buku beserta status peminjaman  
-- 📦 **Pinjam Buku** : mencatat buku yang dipinjam oleh pengguna tertentu  
-- 🔄 **Kembalikan Buku** : mengubah status buku yang sudah dipinjam  
-- 🔍 **Cari Buku** : mencari berdasarkan judul atau penulis  
-- 🗑️ **Hapus Buku** : menghapus data buku dari sistem  
-- 📜 **Riwayat Transaksi** : melihat daftar peminjaman dan pengembalian  
-- 💾 **Penyimpanan JSON** : semua data tersimpan otomatis di `library.json`  
+➕ Tambah Task : menambahkan tugas baru ke dalam daftar
+
+📖 Lihat Task : menampilkan semua tugas beserta status selesai/belum
+
+✅ Tandai Selesai : mengubah status task menjadi selesai
+
+🗑️ Hapus Task : menghapus task dari daftar (opsional, bisa ditambah)
+
+💾 Penyimpanan JSON : semua data tersimpan otomatis di tasks.json
 
 ---
 
-## 🗂️ Model Data Buku
+## 🗂️ Model Data Task
 ```
-type Book struct {
-    ID         int    `json:"id"`
-    Title      string `json:"title"`
-    Author     string `json:"author"`
-    IsBorrowed bool   `json:"is_borrowed"`
+type Task struct {
+    ID    int    `json:"id"`
+    Title string `json:"title"`
+    Done  bool   `json:"done"`
 }
-Model di atas digunakan untuk menyimpan informasi dasar mengenai sebuah buku.
+Struct di atas digunakan untuk menyimpan informasi dasar mengenai sebuah task.
 ```
 ## 🛠️ Cara Menjalankan
 ```
 1. Pastikan Go versi 1.25.1 atau lebih baru sudah terpasang
 
 2. Clone repositori:
-git clone https://github.com/username/perpustakaan-mini.git
+git clone https://github.com/username/todo-app.git
 
 3. Masuk ke folder proyek:
-cd perpustakaan-mini
+cd todo-app
 
 4. Jalankan aplikasi:
 go run main.go
 ```
 ## 🖥️ Tampilan Menu Utama
 ```
-================================
-SISTEM PERPUSTAKAAN SEDERHANA
-================================
-1. Tambah Buku
-2. Lihat Buku
-3. Pinjam Buku
-4. Kembalikan Buku
-5. Cari Buku
-6. Hapus Buku
-7. Riwayat Transaksi
-8. Keluar
+===============================
+   APLIKASI TO-DO LIST
+===============================
+1. Tambah Task
+2. Lihat Semua Task
+3. Tandai Task Selesai
+4. Keluar
 ```
 ## 📖 Panduan Singkat
 ```
-- Tambah Buku → masukkan judul & penulis, lalu data otomatis tersimpan
-- Lihat Buku → tampilkan semua daftar buku dan status pinjam
-- Pinjam Buku → masukkan ID buku dan nama peminjam
-- Kembalikan Buku → masukkan ID buku yang dikembalikan
-- Cari Buku → gunakan kata kunci (judul/penulis) untuk pencarian
-- Hapus Buku → hapus data buku dari sistem berdasarkan ID
-- Riwayat Transaksi → tampilkan catatan peminjaman & pengembalian
+- Tambah Task → masukkan nama tugas, lalu data otomatis tersimpan
+- Lihat Task → tampilkan semua daftar tugas dengan status selesai/belum
+- Tandai Task Selesai → pilih ID task untuk mengubah status menjadi selesai
+- Keluar → otomatis menyimpan semua data ke file tasks.json
 ```
 ## 💾 Penyimpanan Data
 ```
-- Semua data tersimpan di file library.json
+- Semua data tersimpan di file tasks.json
 - File akan dibuat otomatis saat aplikasi pertama kali dijalankan
-- Saat keluar (menu nomor 8), data terbaru akan disimpan kembali
+- Saat keluar (menu nomor 4), data terbaru akan disimpan kembali
 ```
 ## 👨‍💻 Author
 ```
