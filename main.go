@@ -2,76 +2,44 @@ package main
 
 import (
 	"fmt"
-	"perpustakaan-mini/models"
-	"perpustakaan-mini/utils"
+	"todo-app/todo"
 )
 
 func main() {
-	const dataFile = "library.json"
+	var manager todo.TaskManager
 
-	// Load data dari file
-	library := utils.LoadData(dataFile)
-	idCounter := len(library.Books) + 1
+	// Load data dari file saat start
+	manager.LoadFromFile("tasks.json")
 
+	var pilihan int
 	for {
-		fmt.Println("\n================================")
-		fmt.Println("SISTEM PERPUSTAKAAN SEDERHANA")
-		fmt.Println("================================")
-		fmt.Println("1. Tambah Buku")
-		fmt.Println("2. Lihat Buku")
-		fmt.Println("3. Pinjam Buku")
-		fmt.Println("4. Kembalikan Buku")
-		fmt.Println("5. Cari Buku")
-		fmt.Println("6. Hapus Buku")
-		fmt.Println("7. Riwayat Transaksi")
-		fmt.Println("8. Keluar")
-
-		pilihan := utils.InputInt("Pilih menu: ")
+		fmt.Println("\n=== Aplikasi To-Do List ===")
+		fmt.Println("1. Tambah Task")
+		fmt.Println("2. Lihat Semua Task")
+		fmt.Println("3. Tandai Task Selesai")
+		fmt.Println("4. Keluar")
+		fmt.Print("Pilih menu: ")
+		fmt.Scan(&pilihan)
 
 		switch pilihan {
 		case 1:
-			title := utils.InputString("Judul Buku: ")
-			author := utils.InputString("Penulis: ")
-			book := models.Book{
-				ID:         idCounter,
-				Title:      title,
-				Author:     author,
-				IsBorrowed: false,
-			}
-			library.AddBook(book)
-			idCounter++
-
+			var title string
+			fmt.Print("Masukkan nama task: ")
+			fmt.Scan(&title)
+			manager.AddTask(title)
 		case 2:
-			library.ListBooks()
-
+			manager.ShowTasks()
 		case 3:
-			id := utils.InputInt("Masukkan ID Buku yang ingin dipinjam: ")
-			nama := utils.InputString("Nama Peminjam: ")
-			library.BorrowBook(id, nama)
-
+			var id int
+			fmt.Print("Masukkan ID task: ")
+			fmt.Scan(&id)
+			manager.CompleteTask(id)
 		case 4:
-			id := utils.InputInt("Masukkan ID Buku yang ingin dikembalikan: ")
-			nama := utils.InputString("Nama Peminjam: ")
-			library.ReturnBook(id, nama)
-
-		case 5:
-			keyword := utils.InputString("Masukkan kata kunci judul/penulis: ")
-			library.SearchBook(keyword)
-
-		case 6:
-			id := utils.InputInt("Masukkan ID Buku yang ingin dihapus: ")
-			library.DeleteBook(id)
-
-		case 7:
-			library.ShowTransactions()
-
-		case 8:
-			// Simpan data ke file sebelum keluar
-			utils.SaveData(dataFile, library)
-			fmt.Println("Data berhasil disimpan ke", dataFile)
-			fmt.Println("Terima kasih telah menggunakan sistem perpustakaan!")
+			// Simpan data sebelum keluar
+			manager.SaveToFile("tasks.json")
+			fmt.Println("Data disimpan ke tasks.json")
+			fmt.Println("Keluar dari aplikasi.")
 			return
-
 		default:
 			fmt.Println("Pilihan tidak valid.")
 		}
